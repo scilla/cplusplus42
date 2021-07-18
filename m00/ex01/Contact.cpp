@@ -41,11 +41,11 @@ std::string Contact::getInfo(int index) {
 }
 
 void	Contact::displayContact() {
-	std::cout << "First Name: "<<this->firstName << std::endl;
-	std::cout << "Last Name: "<<this->lastName << std::endl;
-	std::cout << "Nickname: "<<this->nickName << std::endl;
-	std::cout << "Phone Number: "<<this->phoneNumber << std::endl;
-	std::cout << "Darkest Secret: "<<this->darkestSecret << std::endl;
+	std::cout << "First Name: " << this->firstName << std::endl;
+	std::cout << "Last Name: " << this->lastName << std::endl;
+	std::cout << "Nickname: " << this->nickName << std::endl;
+	std::cout << "Phone Number: " << this->phoneNumber << std::endl;
+	std::cout << "Darkest Secret: " << this->darkestSecret << std::endl;
 }
 
 Contact::~Contact()
