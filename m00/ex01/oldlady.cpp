@@ -8,7 +8,7 @@ int main(void) {
 
 	while (1)
 	{
-		std::cout << "Cosa vuoi gioia: ";
+		std::cout << "Command: ";
 		std::cin >> str;
 		if (!str.compare("EXIT"))
 		{
@@ -18,6 +18,10 @@ int main(void) {
 		else if (!str.compare("ADD"))
 		{
 			book.addContact();
+		} 
+		else if (!str.compare("SEARCH"))
+		{
+			book.searchContact();
 		} 
 	}
 	return 0;

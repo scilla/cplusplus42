@@ -15,6 +15,7 @@ int Contact::setAttr(std::string str)
 		&this->darkestSecret
 	};
 
+	this->initialized = true;
 	(*arr[i]).assign(str);
 	i++;
 	i = i % (sizeof(arr) / sizeof(arr[0]));
@@ -25,6 +26,21 @@ int Contact::setAttr(std::string str)
 
 std::string Contact::getName() {
 	return this->firstName;
+}
+
+bool	Contact::isInitialized() {
+	return this->initialized;
+}
+
+std::string Contact::getInfo(int index) {
+	std::string	arr[] = {
+		this->firstName,
+		this->lastName,
+		this->nickName,
+		this->phoneNumber,
+		this->darkestSecret
+	};
+	return arr[index];
 }
 
 Contact::~Contact()
