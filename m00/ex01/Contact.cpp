@@ -4,7 +4,7 @@ Contact::Contact()
 {
 }
 
-int Contact::setAttr(std::string str)
+void Contact::setAttr(std::string str)
 {
 	static int i = 0;
 	std::string	*arr[] = {
@@ -19,9 +19,6 @@ int Contact::setAttr(std::string str)
 	(*arr[i]).assign(str);
 	i++;
 	i = i % (sizeof(arr) / sizeof(arr[0]));
-	if (!i)
-		return (1);
-	return (0);
 }
 
 std::string Contact::getName() {
@@ -41,6 +38,14 @@ std::string Contact::getInfo(int index) {
 		this->darkestSecret
 	};
 	return arr[index];
+}
+
+void	Contact::displayContact() {
+	std::cout << "First Name: "<<this->firstName << std::endl;
+	std::cout << "Last Name: "<<this->lastName << std::endl;
+	std::cout << "Nickname: "<<this->nickName << std::endl;
+	std::cout << "Phone Number: "<<this->phoneNumber << std::endl;
+	std::cout << "Darkest Secret: "<<this->darkestSecret << std::endl;
 }
 
 Contact::~Contact()

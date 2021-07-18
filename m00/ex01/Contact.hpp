@@ -15,10 +15,11 @@ private:
 public:
 	Contact();
 	~Contact();
-	int setAttr(std::string str);
+	void 		setAttr(std::string str);
 	std::string getName();
 	std::string getInfo(int index);
 	bool		isInitialized();
+	void		displayContact();
 };
 
 #endif

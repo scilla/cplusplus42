@@ -9,7 +9,7 @@ PhoneBook::PhoneBook()
 void PhoneBook::addContact()
 {
 	Contact 	contact;
-	int			res;
+	//int			res;
 	std::string	str;
 	std::string	fields[] = {
 		"First name",
@@ -21,15 +21,24 @@ void PhoneBook::addContact()
 
 	this->initialized = true;
 	contact = this->contacts[this->index];
+	std::getline(std::cin, str);
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << fields[i] << ": ";
-		std::cin >> str;
-		res = contact.setAttr(str);
+		//std::cin >> str >> std::ws;
+		std::getline(std::cin, str);
+		//std::cout << str << str.length() << std::endl;
+		if (!str.length())
+		{
+			std::cout << "Field \"" << fields[i] << "\" can't be empty" << std::endl;
+			i--;
+			continue;
+		}
+		contact.setAttr(str);
 	}
 	this->contacts[this->index] = contact;
 	this->index++;
-	this->index = this->index % sizeof(this->contacts) / sizeof(this->contacts[0]);
+	this->index = this->index % (sizeof(this->contacts) / sizeof(this->contacts[0]));
 	std::cout << "Added " << contact.getName() << std::endl;
 }
 
@@ -37,6 +46,7 @@ void PhoneBook::searchContact()
 {
 	std::string	info;
 	Contact		contact;
+	int			index;
 
 	if (!this->initialized) {
 		std::cout << "The phonebook is empty!" << std::endl;
@@ -44,19 +54,46 @@ void PhoneBook::searchContact()
 	}
 	std::cout << "|index     |first name|last name |nickname  |" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	int maxind;
 	for (int i = 0; i < 8; i++)
 	{
 		contact = this->contacts[i];
 		if (!contact.isInitialized())
 			break ;
 		std::cout << "|";
-		for (int p = 0; p < 4; p++) {
-			std::cout.width(11);
-			std::cout << contact.getInfo(p) + "|";
+		std::cout << std::setw(10);
+		std::cout << i << "|";
+		for (int p = 0; p < 3; p++) {
+			info = contact.getInfo(p);
+			if (info.length() > 10)
+			{
+				info.assign(info.substr(0, 9));
+				info.append(".");
+			}
+			std::cout << std::setw(10);
+			std::cout << info << "|";
 		}
 		std::cout << std::endl;
-		std::cout.width(0);
+		maxind = i;
 	}
+	while (1)
+	{
+		std::cout << "Contact index [min 0, max " << maxind << "]: ";
+		std::cin >> info;
+		if (!isdigit(info[0]))
+		{
+			std::cout << "Invalid input" << std::endl;
+			continue ;
+		}
+		index = stoi(info);
+		if (index > maxind)
+		{
+			std::cout << "Too damn high" << std::endl;
+			continue ;
+		}
+		break ;
+	}
+	this->contacts[index].displayContact();
 }
 
 PhoneBook::~PhoneBook()

@@ -10,16 +10,16 @@ int main(void) {
 	{
 		std::cout << "Command: ";
 		std::cin >> str;
-		if (!str.compare("EXIT"))
+		if (!str.compare("EXIT") || !str.compare("E"))
 		{
 			std::cout << "bye\n";
 			break ;
 		}
-		else if (!str.compare("ADD"))
+		else if (!str.compare("ADD") || !str.compare("A"))
 		{
 			book.addContact();
 		} 
-		else if (!str.compare("SEARCH"))
+		else if (!str.compare("SEARCH") || !str.compare("S"))
 		{
 			book.searchContact();
 		} 
