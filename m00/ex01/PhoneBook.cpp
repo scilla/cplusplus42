@@ -9,7 +9,6 @@ PhoneBook::PhoneBook()
 void PhoneBook::addContact()
 {
 	Contact 	contact;
-	//int			res;
 	std::string	str;
 	std::string	fields[] = {
 		"First name",
@@ -25,9 +24,7 @@ void PhoneBook::addContact()
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << fields[i] << ": ";
-		//std::cin >> str >> std::ws;
 		std::getline(std::cin, str);
-		//std::cout << str << str.length() << std::endl;
 		if (!str.length())
 		{
 			std::cout << "Field \"" << fields[i] << "\" can't be empty" << std::endl;
