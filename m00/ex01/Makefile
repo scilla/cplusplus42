@@ -4,7 +4,7 @@ OBJ				= $(SRCS:.cpp=.o)
 CC				= clang++
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
-NAME			= oldlady
+NAME			= telefonolibroscarso
 
 %.o:			%.cpp
 				$(CC) $(CFLAGS) -c $< -o $@

@@ -1,4 +1,7 @@
 #include "PhoneBook.hpp"
+#include <string>
+#include <iostream>
+#include <iomanip>
 
 PhoneBook::PhoneBook()
 {
@@ -77,12 +80,12 @@ void PhoneBook::searchContact()
 	{
 		std::cout << "Contact index [min 0, max " << maxind << "]: ";
 		std::cin >> info;
-		if (!isdigit(info[0]))
+		if (!isdigit(info[0]) || info.length() != 1)
 		{
 			std::cout << "Invalid input" << std::endl;
 			continue ;
 		}
-		index = stoi(info);
+		index = info[0] - 48;
 		if (index > maxind)
 		{
 			std::cout << "Too damn high" << std::endl;
