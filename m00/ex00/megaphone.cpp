@@ -8,8 +8,9 @@ int main(int argc, char **argv) {
 			str.append(argv[i]);
 	}
 	else
-		str.append("* LOUD AND UNBEARABLE FEEDBACK NOISE *");
-	std::transform(str.begin(), str.end(), str.begin(), toupper);
+		str.assign("* LOUD AND UNBEARABLE FEEDBACK NOISE *");
+	for (unsigned int i = 0; i < str.length(); i++)
+		str[i] = toupper(str[i]);
 	std::cout << str << std::endl;
 	return 0;
 }

@@ -1,16 +1,30 @@
 #include "Contact.hpp"
 
-Contact::Contact(std::string firstName,
-	std::string lastName,
-	std::string nickName,
-	std::string phoneNumber,
-	std::string	darkestSecret)
+Contact::Contact()
 {
-	this->firstName = firstName;
-	this->lastName = lastName;
-	this->nickName = nickName;
-	this->phoneNumber = phoneNumber;
-	this->darkestSecret = darkestSecret;
+}
+
+int Contact::setAttr(std::string str)
+{
+	static int i = 0;
+	std::string	*arr[] = {
+		&this->firstName,
+		&this->lastName,
+		&this->nickName,
+		&this->phoneNumber,
+		&this->darkestSecret
+	};
+
+	(*arr[i]).assign(str);
+	i++;
+	i = i % (sizeof(arr) / sizeof(arr[0]));
+	if (!i)
+		return (1);
+	return (0);
+}
+
+std::string Contact::getName() {
+	return this->firstName;
 }
 
 Contact::~Contact()
