@@ -1,10 +1,10 @@
-SRCS			= oldlady.cpp PhoneBook.cpp Contact.cpp
+SRCS			= rubricascarsa.cpp PhoneBook.cpp Contact.cpp
 OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
-NAME			= telefonolibroscarso
+NAME			= rubricascarsa
 
 %.o:			%.cpp
 				$(CC) $(CFLAGS) -c $< -o $@
