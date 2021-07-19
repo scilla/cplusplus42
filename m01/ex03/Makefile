@@ -3,7 +3,7 @@ OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 NAME			= unnecessaryviolence
 
 %.o:			%.cpp
