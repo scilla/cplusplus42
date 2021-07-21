@@ -3,9 +3,10 @@
 int	main(void) {
 	Karen	karen;
 
-	karen.debug();
-	karen.info();
-	karen.warning();
-	karen.error();
+	karen.complain("DEBUG");
+	karen.complain("INFO");
+	karen.complain("WARNING");
+	karen.complain("ERROR");
+	karen.complain("42");
 	return 0;
 }
