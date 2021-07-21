@@ -1,6 +1,6 @@
 #include "Karen.hpp"
 
-Karen::Karen(/* args */)
+Karen::Karen()
 {
 	this->kFunctArray["DEBUG"] = &Karen::debug;
 	this->kFunctArray["INFO"] = &Karen::info;
