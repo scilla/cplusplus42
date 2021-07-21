@@ -2,10 +2,15 @@
 
 Karen::Karen()
 {
-	this->kFunctArray["DEBUG"] = &Karen::debug;
-	this->kFunctArray["INFO"] = &Karen::info;
-	this->kFunctArray["WARNING"] = &Karen::warning;
-	this->kFunctArray["ERROR"] = &Karen::error;
+	this->kFunctArray[0] = &Karen::debug;
+	this->kFunctArray[1] = &Karen::info;
+	this->kFunctArray[2] = &Karen::warning;
+	this->kFunctArray[3] = &Karen::error;
+	this->kFunctArray[4] = &Karen::undefined;
+	this->levels[0] = "DEBUG";
+	this->levels[1] = "INFO";
+	this->levels[2] = "WARNING";
+	this->levels[3] = "ERROR";
 }
 
 Karen::~Karen()
@@ -28,11 +33,17 @@ void Karen::error( void ) {
 	std::cout << "[ERROR] YoUr BunCH OF iPOcRTTe iLLetIraTE yoU cLeN YR mOuTH wHEn TaLkIn BOuT mY KidS IMmA GoNnA KiLL yOu!!!!" << std::endl;
 }
 
+void Karen::undefined( void ) {
+	std::cout << "[undefined] Can. You. Speak. English?" << std::endl;
+}
+
 void Karen::complain(std::string level) {
-	if (this->kFunctArray.find(level) != this->kFunctArray.end())
-		(this->*kFunctArray[level])();
-	else
-	{
-		std::cout << "[undefined] Can. You. Speak. English?" << std::endl;
+	int	ind = 4;
+	for (int k = 0; k < 4; k++) {
+		if (this->levels[k] == level) {
+			ind = k;
+			break;
+		}
 	}
+	(this->*kFunctArray[ind])();
 }

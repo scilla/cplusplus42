@@ -8,5 +8,10 @@ int	main(void) {
 	karen.complain("WARNING");
 	karen.complain("ERROR");
 	karen.complain("42");
+	karen.complain("DEBUG");
+	karen.complain("INFO");
+	karen.complain("WARNING");
+	karen.complain("ERROR");
+	karen.complain("42");
 	return 0;
 }
