@@ -1,10 +1,6 @@
 #ifndef KAREN_HPP
 # define KAREN_HPP
 # include <iostream>
-# include <map>
-
-class Karen;
-typedef void (Karen::*KarenFunct)(void);
 
 enum DebugLevel {
 	DEBUG,
@@ -13,10 +9,14 @@ enum DebugLevel {
 	ERROR
 };
 
+class Karen;
+typedef void (Karen::*KarenFunct)(void);
+
 class Karen
 {
 private:
-	std::map<std::string,  KarenFunct> kFunctArray;
+	KarenFunct kFunctArray[5];
+	std::string levels[4];
 	void debug( void );
 	void info( void );
 	void warning( void );
@@ -25,8 +25,8 @@ private:
 public:
 	Karen();
 	~Karen();
+	void setDebugLevel(std::string level);
 	void complain( std::string level );
-	void setDebugLevel( std::string level );
 };
 
 #endif
