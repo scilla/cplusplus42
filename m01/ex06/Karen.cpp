@@ -33,20 +33,9 @@ void Karen::error( void ) {
 	std::cout << "[ERROR] YoUr BunCH OF iPOcRTTe iLLetIraTE yoU cLeN YR mOuTH wHEn TaLkIn BOuT mY KidS IMmA GoNnA KiLL yOu!!!!" << std::endl;
 }
 
+/* this is stupid */
 void Karen::setDebugLevel(std::string level) {
-	/*
-	this->debugLevel = WARNING;
-	for (int k = 0; k < 4; k++) {
-		if (this->levels[k] == level) {
-			this->debugLevel = (DebugLevel)k;
-			return;
-		}
-	}
-	std::cout << level << " not a debug level, falling back to WARNING" << std::endl;
-	*/
 	int dbl = -1;
-
-	dbl = -1;
 	for (int k = 0; k < 4; k++) {
 		if (this->levels[k] == level) {
 			dbl = k;
@@ -57,16 +46,19 @@ void Karen::setDebugLevel(std::string level) {
 	{
 	case 0:
 		this->debugLevel = DEBUG;
+		break;
 	case 1:
 		this->debugLevel = INFO;
+		break;
 	case 2:
 		this->debugLevel = WARNING;
+		break;
 	case 3:
 		this->debugLevel = ERROR;
 		break;
 	default:
 		this->debugLevel = WARNING;
-		std::cout << level << " not a debug level, falling back to WARNING" << std::endl;
+		std::cout << "[WARNING] " << level << " not a debug level, falling back to WARNING" << std::endl;
 		break;
 	}
 }

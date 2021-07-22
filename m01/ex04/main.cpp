@@ -55,6 +55,7 @@ int	main(int argc, char **argv) {
 			break ;
 		inStr.erase(i, oldSubs.length());
 		inStr.insert(i, newSubs);
+		i += newSubs.length();
 	}
 	outFile << inStr;
 	outFile.close();
