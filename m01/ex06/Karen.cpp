@@ -34,12 +34,40 @@ void Karen::error( void ) {
 }
 
 void Karen::setDebugLevel(std::string level) {
+	/*
 	this->debugLevel = WARNING;
 	for (int k = 0; k < 4; k++) {
 		if (this->levels[k] == level) {
 			this->debugLevel = (DebugLevel)k;
 			return;
 		}
+	}
+	std::cout << level << " not a debug level, falling back to WARNING" << std::endl;
+	*/
+	int dbl = -1;
+
+	dbl = -1;
+	for (int k = 0; k < 4; k++) {
+		if (this->levels[k] == level) {
+			dbl = k;
+			break;
+		}
+	}
+	switch (dbl)
+	{
+	case 0:
+		this->debugLevel = DEBUG;
+	case 1:
+		this->debugLevel = INFO;
+	case 2:
+		this->debugLevel = WARNING;
+	case 3:
+		this->debugLevel = ERROR;
+		break;
+	default:
+		this->debugLevel = WARNING;
+		std::cout << level << " not a debug level, falling back to WARNING" << std::endl;
+		break;
 	}
 }
 
