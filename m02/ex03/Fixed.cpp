@@ -36,6 +36,10 @@ Fixed& Fixed::operator= (const Fixed &fixed)
 	return *this;
 }
 
+Fixed::Fixed(const Fixed &fixed)
+{
+	this->setRawBits(fixed.getRawBits());
+}
 
 Fixed& Fixed::operator++() {
 	rawBits++;
@@ -116,11 +120,6 @@ bool Fixed::operator <= (const Fixed &b) const {
 		return (rawBits >> (binaryPoint - b.binaryPoint) <= b.rawBits);
 	else
 		return (rawBits <= b.rawBits >> (b.binaryPoint - binaryPoint));
-}
-
-Fixed::Fixed(const Fixed &fixed)
-{
-	this->setRawBits(fixed.getRawBits());
 }
 
 Fixed::~Fixed()
