@@ -8,7 +8,7 @@ class Fixed
 {
 private:
 	int rawBits;
-	static const char binaryPoint = 6;
+	static const char binaryPoint = 8;
 public:
 	Fixed();
 	Fixed(const int n);

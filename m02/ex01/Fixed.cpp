@@ -29,7 +29,7 @@ Fixed::Fixed(const int n)
 
 Fixed::Fixed(const float n)
 {
-	std::cout << "Float constructor called " << n << std::endl;
+	std::cout << "Float constructor called " << std::endl;
 	rawBits = roundf(n * (1 << binaryPoint));
 	/*
 	int sign = *(unsigned int *)(&n) >> 31;
@@ -61,7 +61,6 @@ Fixed::~Fixed()
 }
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return rawBits;
 }
 
