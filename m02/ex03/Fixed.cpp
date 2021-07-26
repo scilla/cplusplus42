@@ -17,25 +17,21 @@ void show_binrep(const T& a)
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	rawBits = 0;
 }
 
 Fixed::Fixed(const int n)
 {
-	std::cout << "Integer constructor called" << std::endl;
 	rawBits = (n << binaryPoint) | (*(unsigned char *)(&n) >> 7);
 }
 
 Fixed::Fixed(const float n)
 {
-	std::cout << "Float constructor called " << std::endl;
 	rawBits = roundf(n * (1 << binaryPoint));
 }
 
 Fixed& Fixed::operator= (const Fixed &fixed)
 {
-	std::cout << "Assignation operator called" << std::endl;
 	rawBits = fixed.getRawBits();
 	return *this;
 }
@@ -124,13 +120,11 @@ bool Fixed::operator <= (const Fixed &b) const {
 
 Fixed::Fixed(const Fixed &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = fixed;
+	this->setRawBits(fixed.getRawBits());
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits(void) const {

@@ -1,9 +1,9 @@
-SRCS			= main.cpp Fixed.cpp
+SRCS			= main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
 RM				= rm -f
-CFLAGS			= #-Wall -Wextra -Werror -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -std=c++98
 NAME			= fixedTest
 
 %.o:			%.cpp
