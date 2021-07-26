@@ -1,5 +1,5 @@
-#ifndef FICED_HPP
-# define FICED_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 # include <iostream>
 # include <cmath>
@@ -8,7 +8,7 @@ class Fixed
 {
 private:
 	int rawBits;
-	static const char binaryPoint = 8;
+	static const char binaryPoint = 6;
 public:
 	Fixed();
 	Fixed(const int n);
@@ -18,7 +18,12 @@ public:
 	~Fixed();
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
+	float toFloat( void ) const;
+	int toInt( void ) const;
+	//Fixed operator << (Fixed const &obj);
 };
+
+std::ostream& operator<< (std::ostream &out, Fixed const& c);
 
 #endif
 
