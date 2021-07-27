@@ -64,11 +64,11 @@ Fixed Fixed::operator--(int) {
 }
 
 bool Fixed::operator ==(const Fixed &b) const {
-	return (rawBits == b.rawBits && binaryPoint == b.binaryPoint);
+	return (rawBits == b.rawBits);
 }
 
 bool Fixed::operator !=(const Fixed &b) const {
-	return (rawBits != b.rawBits ||  binaryPoint != b.binaryPoint);
+	return (rawBits != b.rawBits);
 }
 
 Fixed Fixed::operator +(const Fixed &b) const {
@@ -95,31 +95,19 @@ Fixed Fixed::operator /(const Fixed &b) const {
 }
 
 bool Fixed::operator > (const Fixed &b) const {
-	if (binaryPoint > b.binaryPoint)
-		return (rawBits >> (binaryPoint - b.binaryPoint) > b.rawBits);
-	else
-		return (rawBits > b.rawBits >> (b.binaryPoint - binaryPoint));
+	return (rawBits > b.rawBits >> (b.binaryPoint - binaryPoint));
 }
 
 bool Fixed::operator >= (const Fixed &b) const {
-	if (binaryPoint > b.binaryPoint)
-		return (rawBits >> (binaryPoint - b.binaryPoint) >= b.rawBits);
-	else
-		return (rawBits >= b.rawBits >> (b.binaryPoint - binaryPoint));
+	return (rawBits >= b.rawBits >> (b.binaryPoint - binaryPoint));
 }
 
 bool Fixed::operator < (const Fixed &b) const {
-	if (binaryPoint > b.binaryPoint)
-		return (rawBits >> (binaryPoint - b.binaryPoint) < b.rawBits);
-	else
-		return (rawBits < b.rawBits >> (b.binaryPoint - binaryPoint));
+	return (rawBits < b.rawBits >> (b.binaryPoint - binaryPoint));
 }
 
 bool Fixed::operator <= (const Fixed &b) const {
-	if (binaryPoint > b.binaryPoint)
-		return (rawBits >> (binaryPoint - b.binaryPoint) <= b.rawBits);
-	else
-		return (rawBits <= b.rawBits >> (b.binaryPoint - binaryPoint));
+	return (rawBits <= b.rawBits >> (b.binaryPoint - binaryPoint));
 }
 
 Fixed::~Fixed()
