@@ -21,7 +21,8 @@ Point::Point(const Point &point) : x(point.getX()), y(point.getY())
 {
 }
 
-Point& Point::operator= (const Point &point) {
+Point& Point::operator= (const Point &point)
+{
 	this->setX(point.getX());
 	this->setY(point.getY());
 	return *this;

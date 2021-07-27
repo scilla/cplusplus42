@@ -25,22 +25,35 @@ Fixed::Fixed(const int n)
 {
 	std::cout << "Integer constructor called" << std::endl;
 	rawBits = (n << binaryPoint) | (*(unsigned char *)(&n) >> 7);
+	rawBits = (n << binaryPoint);
 }
 
 Fixed::Fixed(const float n)
 {
+	rawBits = 0;
+	unsigned int mantissa;
+	int shift;
 	std::cout << "Float constructor called " << std::endl;
-	/*
-	rawBits = roundf(n * (1 << binaryPoint));
-	*/
-	int sign = *(unsigned int *)(&n) >> 31;
-	int exponent = ((unsigned char)((*(unsigned int *)(&n) << 1) >> 24)) - 127;
-	unsigned int mantissa = (*(unsigned int *)(&n) << 9) >> 9;
-	mantissa += (1 << 23);
-	rawBits = mantissa >> ((23 - binaryPoint) - exponent);
+	unsigned int sign = (*(unsigned int *)(&n) & (1 << 31));
+	int exponent = (unsigned char)((*(unsigned int *)(&n) << 1) >> 24);
+	if (!exponent) {
+		exponent = 0;
+		mantissa = 0;
+		shift = 0;
+	} else {
+		exponent -= 127;
+		mantissa = (*(unsigned int *)(&n) << 9) >> 9;
+		mantissa += (1 << 23);
+		shift = ((23 - binaryPoint) - exponent);
+	}
+	if (shift > 0)
+		rawBits = mantissa >> shift;
+	else if (shift < 0)
+		rawBits = mantissa << -shift;
 	if (sign)
-		rawBits *= -1;
-	rawBits++;
+		rawBits = rawBits | (unsigned int)(1 << 31);
+	if (shift > 0 && (mantissa & (1 << (shift - 1))))
+		rawBits++;
 }
 
 Fixed& Fixed::operator= (const Fixed &fixed)
@@ -70,13 +83,16 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-	/*
-	return ((float)rawBits / (1 << binaryPoint));
-	*/
 	unsigned int res = 0;
-	unsigned int sign = *(unsigned int *)(&rawBits) >> 31;	
+	unsigned int sign = *(unsigned int *)(&rawBits) >> 31;
 	unsigned char rawExp = 23 - binaryPoint + 127 + 7;
-	unsigned int rawCpy = rawBits;
+	unsigned int rawCpy = *(unsigned int *)(&rawBits);
+	if (sign)
+		rawCpy -= 1 << 31;
+	if (rawCpy == 0)
+		return 0;
+	if (rawCpy == (unsigned int)(1 << 23))
+		return -0;
 	while (rawExp > (23 - binaryPoint + 127) - 32) {
 		rawCpy = rawCpy << 1;
 		if (rawCpy & (1 << 31)) {

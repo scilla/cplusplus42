@@ -10,9 +10,8 @@ int main( void ) {
 	int res;
 
 	for (int y = 14; y >= 0; y--) {
-		p.setY(Fixed(y));
 		for (int x = 0; x < 20; x++) {
-			p.setX(Fixed(x));
+			p = Point(Fixed(x), Fixed(y));
 			res = bsp(a, b, c, p);
 			if (!res)
 				std::cout << "\033[31m";
