@@ -35,7 +35,6 @@ Fixed Point::getY() const {
 	return y;
 }
 
-
 Point::~Point()
 {
 }
