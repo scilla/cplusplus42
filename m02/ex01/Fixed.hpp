@@ -1,5 +1,5 @@
-#ifndef FICED_HPP
-# define FICED_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 # include <iostream>
 # include <cmath>
@@ -18,14 +18,10 @@ public:
 	~Fixed();
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
+	float toFloat( void ) const;
+	int toInt( void ) const;
 };
 
+std::ostream& operator<< (std::ostream &out, Fixed const& c);
+
 #endif
-
-/*
-cFloat 8
-0001 0100
-fFloat 4
-1000 0000
-
-*/
