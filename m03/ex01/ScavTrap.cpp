@@ -33,11 +33,31 @@ void	ScavTrap::printName() const {
 ScavTrap::~ScavTrap()
 {
 	printName();
-	std::cout << " vanished into thin air" << std::endl;
+	std::cout << " GTFO'd" << std::endl;
+}
+
+void	ScavTrap::attack(std::string const & target)
+{
+	if (checkDeath())
+		return ;
+	if (_energyPoints)
+	{
+		printName();
+		std::cout << " farted towards " << target << ", the smell caused " << _attackDamage << " points of damage!" << std::endl;
+		_energyPoints--;
+	}
+	else
+	{
+		printName();
+		std::cout << " has no energy point left to attack " << target << std::endl;
+	}
 }
 
 void ScavTrap::guardGate() {
-	isGuardGate = true;
 	printName();
-	std::cout << " has enterred in Gate keeper mode!" << std::endl;
+	if (!isGuardGate)
+		std::cout << " has enterred Gate keeper mode!" << std::endl;
+	else
+		std::cout << " has exited Gate keeper mode!" << std::endl;
+	isGuardGate = !isGuardGate;
 }

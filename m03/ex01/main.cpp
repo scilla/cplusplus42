@@ -6,12 +6,14 @@ int main() {
 	ClapTrap francesca("Francesca");
 	ClapTrap edoardo("Edoardo");
 
-	edoardo.beRepaired(100);
-	for (int i = 0; i < 11; i++) {
-		vincenzo.attack(edoardo.getName());
-		edoardo.takeDamage(vincenzo.getAttackDamage());
-	}
-	vincenzo.beRepaired(10);
+	edoardo.beRepaired(33);
+	vincenzo.attack(edoardo.getName());
+	edoardo.takeDamage(vincenzo.getAttackDamage());
+	edoardo.attack(vincenzo.getName());
+	vincenzo.takeDamage(edoardo.getAttackDamage());
+	vincenzo.guardGate();
+	vincenzo.guardGate();
+	edoardo.beRepaired(60);
 	vincenzo.takeDamage(999);
 	return 0;
 }

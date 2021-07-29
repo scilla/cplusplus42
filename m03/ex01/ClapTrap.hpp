@@ -17,7 +17,7 @@ public:
 	ClapTrap(const ClapTrap &claptrap);
 	ClapTrap& operator= (const ClapTrap &claptrap);
 	virtual void	printName() const;
-	void	attack(std::string const & target);
+	virtual	void	attack(std::string const & target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 	bool	checkDeath() const;
