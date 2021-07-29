@@ -2,16 +2,20 @@
 # define FRAGTRAP_HPP
 # include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap
+class FragTrap: virtual public ClapTrap
 {
 private:
 	std::string _trapType;
+protected:
+	unsigned int 	_hitPoints;
+	unsigned int 	_energyPoints;
+	unsigned int 	_attackDamage;
 public:
 	FragTrap(std::string name);
 	~FragTrap();
 	FragTrap(const FragTrap &fragtrap);
 	FragTrap& operator= (const FragTrap &fragtrap);
-	virtual	void	attack(std::string const & target);
+	void	attack(std::string const & target);
 	virtual void	printName() const;
 	void			highFivesGuys();
 };

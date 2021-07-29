@@ -6,8 +6,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	_hitPoints = 100;
 	_energyPoints = 100;
 	_attackDamage = 30;
-	_trapType = "ScavTrap";
-	isGuardGate = false;
+	_trapType = "FragTrap";
 	printName();
 	std::cout << " thought itself into existence" << std::endl;
 }

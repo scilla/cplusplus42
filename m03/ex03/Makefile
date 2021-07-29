@@ -1,10 +1,10 @@
-SRCS			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRCS			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
 RM				= rm -f
-CFLAGS			= -std=c++98 -g -Wall -Wextra -Werror
-NAME			= fragtrap
+CFLAGS			= -std=c++98 -g -Wall -Wextra -Werror  -Wno-shadow -Wshadow
+NAME			= diamondtrap
 
 %.o:			%.cpp
 				$(CC) $(CFLAGS) -c $< -o $@
