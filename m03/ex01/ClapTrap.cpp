@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(std::string name)
 	_attackDamage = 0;
 	_trapType = "ClapTrap";
 	printName();
-	std::cout << " showed up" << std::endl;
+	std::cout << " showed up dressed like yesterday" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
