@@ -1,0 +1,13 @@
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+int main()
+{
+	//Animal	genericanimal;
+	Dog		dog;
+	
+	dog.makeSound();
+	//genericanimal.makeSound();
+	return 0;
+}
