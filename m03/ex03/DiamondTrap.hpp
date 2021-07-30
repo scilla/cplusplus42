@@ -8,10 +8,10 @@ class DiamondTrap: public FragTrap, public ScavTrap
 private:
 	std::string _trapType;
 	std::string	_name;
-protected:
 	unsigned int 	_hitPoints;
 	unsigned int 	_energyPoints;
 	unsigned int 	_attackDamage;
+protected:
 public:
 	DiamondTrap(std::string name);
 	~DiamondTrap();
@@ -20,8 +20,14 @@ public:
 	void 		printName() const;
 	std::string	getName() const;
 	void 		whoAmI();
-	int			getAttackDamage() const;
 	using 		ScavTrap::attack;
+	void	takeDamage(unsigned int amount);
+	virtual unsigned int 	get_hitPoints() const;
+	virtual unsigned int 	get_energyPoints() const;
+	virtual unsigned int 	get_attackDamage() const;
+	virtual void			set_hitPoints(unsigned int n);
+	virtual void			set_energyPoints(unsigned int n);
+	virtual void			set_attackDamage(unsigned int n);
 };
 
 #endif /* DIAMONDTRAP_HPP */
