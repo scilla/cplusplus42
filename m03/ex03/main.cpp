@@ -27,7 +27,7 @@ int main() {
 	francesca.takeDamage(ciro.get_attackDamage());
 	francesca.attack(ciro.getName());
 	ciro.takeDamage(francesca.get_attackDamage());
-	//ciro.guardGate();
-	// ciro.highFivesGuys();
+	ciro.guardGate();
+	ciro.highFivesGuys();
 	return 0;
 }

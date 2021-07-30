@@ -9,7 +9,7 @@ public:
 	WrongCat(const WrongCat &cat);
 	WrongCat &operator=(const WrongCat &cat);
 	~WrongCat();
-	virtual void	makeSound() const;
+	void	makeSound() const;
 };
 
 #endif /* WRONGCAT_HPP */
