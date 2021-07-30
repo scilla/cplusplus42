@@ -10,30 +10,11 @@ private:
 public:
 	Animal();
 	Animal(const Animal &animal);
-	Animal &operator=(const Animal &animal);
+	Animal& operator=(const Animal &animal);
 	~Animal();
 	virtual void	makeSound() const;
+	std::string		getType() const;
+
 };
-
-Animal::Animal()
-{
-	type = "Animal";
-}
-
-Animal::Animal(const Animal &animal) {
-	*this = animal;
-}
-
-Animal &Animal::operator=(const Animal &animal) {
-	
-}
-
-Animal::~Animal()
-{
-}
-
-void Animal::makeSound() const {
-	std::cout << "I'm a animal. I may or may not make sounds." << std::endl;
-}
 
 #endif /* ANIMAL_HPP */
