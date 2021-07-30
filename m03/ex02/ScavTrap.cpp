@@ -3,9 +3,9 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	_hitPoints = 100;
-	_energyPoints = 50;
-	_attackDamage = 20;
+	set_hitPoints(100);
+	set_energyPoints(50);
+	set_attackDamage(20);
 	_trapType = "ScavTrap";
 	isGuardGate = false;
 	printName();
@@ -19,9 +19,9 @@ ScavTrap::ScavTrap(const ScavTrap &scavtrap) : ClapTrap(scavtrap)
 
 ScavTrap& ScavTrap::operator= (const ScavTrap &scavtrap) {
 	_name = scavtrap._name;
-	_hitPoints = scavtrap._hitPoints;
-	_attackDamage = scavtrap._attackDamage;
-	_energyPoints = scavtrap._energyPoints;
+	set_hitPoints(scavtrap.get_hitPoints());
+	set_attackDamage(scavtrap.get_attackDamage());
+	set_energyPoints(scavtrap.get_energyPoints());
 	_trapType = scavtrap._trapType;
 	return *this;
 }
@@ -40,11 +40,12 @@ void	ScavTrap::attack(std::string const & target)
 {
 	if (checkDeath())
 		return ;
-	if (_energyPoints)
+	if (get_energyPoints())
 	{
 		printName();
-		std::cout << " farted towards " << target << ", the smell caused " << _attackDamage << " points of damage!" << std::endl;
-		_energyPoints--;
+		
+		std::cout << " farted towards " << target << ", the smell caused " << get_attackDamage() << " points of damage!" << std::endl;
+		set_energyPoints(get_energyPoints() - 1);
 	}
 	else
 	{
@@ -60,4 +61,23 @@ void ScavTrap::guardGate() {
 	else
 		std::cout << " has exited Gate keeper mode!" << std::endl;
 	isGuardGate = !isGuardGate;
+}
+
+unsigned int 	ScavTrap::get_hitPoints() const {
+	return _hitPoints;
+}
+unsigned int 	ScavTrap::get_energyPoints() const {
+	return _energyPoints;
+}
+unsigned int 	ScavTrap::get_attackDamage() const {
+	return _attackDamage;
+}
+void	ScavTrap::set_hitPoints(unsigned int n) {
+	_hitPoints = n;
+}
+void	ScavTrap::set_energyPoints(unsigned int n) {
+	_energyPoints = n;
+}
+void	ScavTrap::set_attackDamage(unsigned int n) {
+	_attackDamage = n;
 }

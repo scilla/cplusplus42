@@ -17,9 +17,9 @@ void	ClapTrap::printName() const {
 ClapTrap::ClapTrap(std::string name)
 {
 	_name = name;
-	_hitPoints = 10;
-	_energyPoints = 10;
-	_attackDamage = 0;
+	set_hitPoints(10);
+	set_energyPoints(10);
+	set_attackDamage(0);
 	_trapType = "ClapTrap";
 	printName();
 	std::cout << " showed up dressed like yesterday night" << std::endl;
@@ -37,9 +37,9 @@ ClapTrap::ClapTrap(const ClapTrap &claptrap) {
 
 ClapTrap& ClapTrap::operator= (const ClapTrap &claptrap) {
 	_name = claptrap._name;
-	_hitPoints = claptrap._hitPoints;
-	_attackDamage = claptrap._attackDamage;
-	_energyPoints = claptrap._energyPoints;
+	set_hitPoints(claptrap.get_hitPoints());
+	set_attackDamage(claptrap.get_attackDamage());
+	set_energyPoints(claptrap.get_energyPoints());
 	_trapType = claptrap._trapType;
 	return *this;
 }
@@ -48,11 +48,11 @@ void	ClapTrap::attack(std::string const & target)
 {
 	if (checkDeath())
 		return ;
-	if (_energyPoints)
+	if (get_energyPoints())
 	{
 		printName();
-		std::cout << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
-		_energyPoints--;
+		std::cout << " attacks " << target << ", causing " << get_attackDamage() << " points of damage!" << std::endl;
+		set_energyPoints(get_energyPoints() - 1);
 	}
 	else
 	{
@@ -65,13 +65,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (checkDeath())
 		return ;
-	if (amount > _hitPoints)
-		_hitPoints = 0;
+	if (amount > get_hitPoints())
+		set_hitPoints(0);
 	else
-		_hitPoints -= amount;
+		set_hitPoints(get_hitPoints() - amount);
 	printName();
-	std::cout << " took " << amount << " points of damage! " << _hitPoints << " points remaining" << std::endl;
-	if (!_hitPoints) {
+	std::cout << " took " << amount << " points of damage! " << get_hitPoints() << " points remaining" << std::endl;
+	if (!get_hitPoints()) {
 		printName();
 		std::cout << " died!" << std::endl;
 	}
@@ -79,15 +79,31 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	_hitPoints += amount;
+	set_hitPoints(get_hitPoints() + amount);
 	printName();
-	std::cout << " has been repaired for " << amount << " hit points, "  << _hitPoints << " points remaining" << std::endl;
-}
-
-int		ClapTrap::getAttackDamage() const {
-	return _attackDamage;
+	std::cout << " has been repaired for " << amount << " hit points, "  << get_hitPoints() << " points remaining" << std::endl;
 }
 
 std::string		ClapTrap::getName() const {
 	return _name;
+}
+
+unsigned int 	ClapTrap::get_hitPoints() const {
+	return _hitPoints;
+}
+unsigned int 	ClapTrap::get_energyPoints() const {
+	return _energyPoints;
+}
+unsigned int 	ClapTrap::get_attackDamage() const {
+	return _attackDamage;
+}
+
+void	ClapTrap::set_hitPoints(unsigned int n) {
+	_hitPoints = n;
+}
+void	ClapTrap::set_energyPoints(unsigned int n) {
+	_energyPoints = n;
+}
+void	ClapTrap::set_attackDamage(unsigned int n) {
+	_attackDamage = n;
 }
