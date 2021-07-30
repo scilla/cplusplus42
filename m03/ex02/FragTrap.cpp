@@ -3,11 +3,10 @@
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	_hitPoints = 100;
-	_energyPoints = 100;
-	_attackDamage = 30;
-	_trapType = "ScavTrap";
-	isGuardGate = false;
+	set_hitPoints(100);
+	set_energyPoints(100);
+	set_attackDamage(30);
+	_trapType = "FragTrap";
 	printName();
 	std::cout << " thought itself into existence" << std::endl;
 }
@@ -19,9 +18,9 @@ FragTrap::FragTrap(const FragTrap &fragtrap) : ClapTrap(fragtrap)
 
 FragTrap& FragTrap::operator= (const FragTrap &fragtrap) {
 	_name = fragtrap._name;
-	_hitPoints = fragtrap._hitPoints;
-	_attackDamage = fragtrap._attackDamage;
-	_energyPoints = fragtrap._energyPoints;
+	set_hitPoints(fragtrap.get_hitPoints());
+	set_attackDamage(fragtrap.get_attackDamage());
+	set_energyPoints(fragtrap.get_energyPoints());
 	_trapType = fragtrap._trapType;
 	return *this;
 }
@@ -40,11 +39,11 @@ void	FragTrap::attack(std::string const & target)
 {
 	if (checkDeath())
 		return ;
-	if (_energyPoints)
+	if (get_energyPoints())
 	{
 		printName();
-		std::cout << " trow a rancid polpetta at " << target << ", the E. Coli caused " << _attackDamage << " points of damage!" << std::endl;
-		_energyPoints--;
+		std::cout << " trow a rancid polpetta at " << target << ", the E. Coli caused " << get_attackDamage() << " points of damage!" << std::endl;
+		set_energyPoints(get_energyPoints() - 1);
 	}
 	else
 	{
@@ -69,4 +68,24 @@ void FragTrap::highFivesGuys() {
 leaving you standing there like a fool and you \
 start thinking about all the mistakes you made in your \
 life." << std::endl;
+}
+
+unsigned int 	FragTrap::get_hitPoints() const {
+	return _hitPoints;
+}
+unsigned int 	FragTrap::get_energyPoints() const {
+	return _energyPoints;
+}
+unsigned int 	FragTrap::get_attackDamage() const {
+	return _attackDamage;
+}
+
+void	FragTrap::set_hitPoints(unsigned int n) {
+	_hitPoints = n;
+}
+void	FragTrap::set_energyPoints(unsigned int n) {
+	_energyPoints = n;
+}
+void	FragTrap::set_attackDamage(unsigned int n) {
+	_attackDamage = n;
 }
