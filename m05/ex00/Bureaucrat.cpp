@@ -2,6 +2,10 @@
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int n) : _name(name)
 {
+	if (n < 1)
+		throw GradeTooHighException();
+	if (n > 150)
+		throw GradeTooLowException();
 	_grade = n;
 }
 

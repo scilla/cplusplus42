@@ -3,6 +3,23 @@
 
 int main()
 {
+	try
+	{
+		Bureaucrat troppoAlto("Giovanni", 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Bureaucrat troppoBasso("Brunetta", 151);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	Bureaucrat alto("Giovanni", 2);
 	Bureaucrat basso("Giacomo", 149);
 
