@@ -32,7 +32,6 @@ void ShrubberyCreationForm::_execute() const
 	fileName.assign(_target);
 	fileName.append("_shrubbery");
 	outFile.open(fileName.c_str(), std::_S_app);
-	std::cout << getName() << " executed" << std::endl;
 	outFile << "\n\
                ,@@@@@@@,\n\
        ,,,.   ,@@@@@@/@@,  .oo8888o.\n\
