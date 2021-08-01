@@ -26,5 +26,8 @@ int main()
 	pippo->incrementGrade();
 	pippo->signForm(*form);
 	std::cout << *form;
+	delete pippo;
+	delete pupo;
+	delete form;
 	return 0;
 }
