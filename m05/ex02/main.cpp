@@ -18,6 +18,7 @@ int main()
 	pupo->executeForm(*shrubbery);
 	pupo->signForm(*shrubbery);
 	pupo->executeForm(*shrubbery);
+
 	std::cout << std::endl << *robotomy;
 	pupo->executeForm(*robotomy);
 	pupo->signForm(*robotomy);
@@ -26,6 +27,7 @@ int main()
 	pippo->executeForm(*robotomy);
 	pippo->incrementGrade();
 	pippo->executeForm(*robotomy);
+	
 	std::cout << std::endl << *pardon;
 	pupo->executeForm(*pardon);
 	pupo->signForm(*pardon);
