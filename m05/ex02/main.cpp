@@ -12,7 +12,7 @@ int main()
 	Bureaucrat* president = new Bureaucrat("Sergio Mattarella", 1);
 	Form* shrubbery = new ShrubberyCreationForm("The Hub");
 	Form* robotomy = new RobotomyRequestForm("Bimby X-100");
-	Form* pardon = new PresidentialPardonForm("Brutus");
+	Form* pardon = new PresidentialPardonForm("Dr. Gerry Scotty");
 
 	std::cout << std::endl << *shrubbery;
 	pupo->executeForm(*shrubbery);
