@@ -30,10 +30,10 @@ void	Dog::makeSound() const {
 
 std::string		Dog::getIdea(unsigned int i) const
 {
-	return brain->ideas[i];
+	return brain->getIdea(i);
 }
 
 void			Dog::setIdea(unsigned int i, const std::string & str)
 {
-	brain->ideas[i] = str;
+	brain->setIdea(i, str);
 }

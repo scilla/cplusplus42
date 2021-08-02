@@ -30,10 +30,10 @@ void	Cat::makeSound() const {
 
 std::string		Cat::getIdea(unsigned int i) const
 {
-	return brain->ideas[i];
+	return brain->getIdea(i);
 }
 
 void			Cat::setIdea(unsigned int i, const std::string & str)
 {
-	brain->ideas[i] = str;
+	brain->setIdea(i, str);
 }

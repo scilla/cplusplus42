@@ -2,7 +2,7 @@
 
 Dog::Dog() {
 	std::cout << "Dog constructor called" << std::endl;
-	type = "Dog";
+	setType("Dog");
 	brain = new Brain();
 }
 
@@ -14,7 +14,7 @@ Dog::Dog(const Dog &dog) {
 
 Dog &Dog::operator=(const Dog &dog) {
 	std::cout << "Dog assignament operator called" << std::endl;
-	type = dog.type;
+	setType(dog.getType());
 	*brain = *dog.brain;
 	return *this;
 }
@@ -30,10 +30,10 @@ void	Dog::makeSound() const {
 
 std::string		Dog::getIdea(unsigned int i) const
 {
-	return brain->ideas[i];
+	return brain->getIdea(i);
 }
 
 void			Dog::setIdea(unsigned int i, const std::string & str)
 {
-	brain->ideas[i] = str;
+	brain->setIdea(i, str);
 }
