@@ -8,6 +8,8 @@
 
 int main()
 {
+	
+	std::cout << 4.2;
 	Bureaucrat* pupo = new Bureaucrat("Gigi Di Maio", 73);
 	Bureaucrat* pippo = new Bureaucrat("Mario Draghi", 46);
 	Bureaucrat* president = new Bureaucrat("Sergio Mattarella", 1);
