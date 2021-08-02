@@ -1,7 +1,7 @@
 #include "Dog.hpp"
 
 Dog::Dog() {
-	type = "Dog";
+	setType("Dog");
 }
 
 Dog::Dog(const Dog &dog) {
@@ -9,7 +9,7 @@ Dog::Dog(const Dog &dog) {
 }
 
 Dog &Dog::operator=(const Dog &dog) {
-	type = dog.type;
+	setType(dog.getType());
 	return *this;
 }
 

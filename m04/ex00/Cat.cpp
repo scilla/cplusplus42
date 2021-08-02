@@ -1,7 +1,7 @@
 #include "Cat.hpp"
 
 Cat::Cat() {
-	type = "Cat";
+	setType("Cat");
 }
 
 Cat::Cat(const Cat &cat) {
@@ -9,7 +9,7 @@ Cat::Cat(const Cat &cat) {
 }
 
 Cat &Cat::operator=(const Cat &cat) {
-	type = cat.type;
+	setType(cat.getType());
 	return *this;
 }
 
