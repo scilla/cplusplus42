@@ -3,7 +3,7 @@ OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
 RM				= rm -f
-CFLAGS			= -std=c++98 -g -Wall -Wextra -Werror # -Wno-shadow -Wshadow
+CFLAGS			= -std=c++98 -g -Wall -Wextra -Werror
 NAME			= brain
 
 %.o:			%.cpp

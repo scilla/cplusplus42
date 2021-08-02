@@ -4,9 +4,8 @@
 
 class Animal
 {
-protected:
-	std::string type;
 private:
+	std::string type;
 public:
 	Animal();
 	Animal(const Animal &animal);
@@ -14,6 +13,9 @@ public:
 	virtual ~Animal();
 	virtual void	makeSound() const;
 	std::string		getType() const;
+	void	setType(std::string str);
+	virtual std::string		getIdea(unsigned int i) const = 0;
+	virtual void			setIdea(unsigned int i, const std::string & str) = 0;
 };
 
 #endif /* ANIMAL_HPP */
