@@ -1,5 +1,11 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
+#if __APPLE__
+# define APPEND std::iostream::app
+#else
+# define APPEND std::_S_app
+#endif
+
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("shrubbery", 137, 145)
 {
