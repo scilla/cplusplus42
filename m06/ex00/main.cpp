@@ -53,8 +53,6 @@ int main(int argc, char const *argv[])
 	float	float_res = 0;
 	double	double_res = 0;
 	double intpart;
-	//unsigned int precision = 30;
-	//char* end;
 
 	if (argc != 2 || std::string(argv[1]).length() == 0){
 		std::cout << "wrong args" << std::endl;
@@ -94,19 +92,37 @@ int main(int argc, char const *argv[])
 		float_res = static_cast<float>(double_res);
 	}
 	else
-		std::cout << "else" << std::endl;
+	{
+		std::cout << "Eh?" << std::endl;
+		return 0;
+	}
 
-	if ()
-	std::cout << "char: " << char_res << std::endl;
-	std::cout << "int: " << int_res << std::endl;
-	if (!modf(float_res, &intpart))
+	/*			CHAR PRINT			*/
+	if (isnan(double_res) || isinf(double_res) || double_res < 0 || double_res > 127)
+		std::cout << "char: " << "impossible" << std::endl;
+	else if (isprint(char_res))
+		std::cout << "char: '" << char_res << "'" <<std::endl;
+	else
+		std::cout << "char: " << "Non displayable" << std::endl;
+	
+	/*			INT PRINT			*/
+	if (isnan(double_res) || isinf(double_res) || double_res < INT_MIN || double_res > INT_MAX)
+		std::cout << "int: " << "impossible" << std::endl;
+	else
+		std::cout << "int: " << int_res << std::endl;
+	
+	/*			FLOAT PRINT			*/
+	if (double_res < __FLT_MIN__ || double_res > __FLT_MAX__)
+		std::cout << "float: " << "impossible" << std::endl;
+	else if (!modf(float_res, &intpart) && !isnan(double_res) && !isinf(double_res))
 		std::cout << "float: " << std::setprecision(7) << float_res << ".0" << 'f' << std::endl;
 	else
 		std::cout << "float: " << std::setprecision(7) << float_res << 'f' << std::endl;
-	if (!modf(double_res, &intpart))
+	
+	/*			DOUBLE PRINT		*/
+	if (!modf(double_res, &intpart) && !isnan(double_res) && !isinf(double_res))
 		std::cout << "double: " << std::setprecision(16) << double_res << ".0" << std::endl;
 	else
 		std::cout << "double: " << std::setprecision(16) << double_res << std::endl;
-
 	return 0;
 }
