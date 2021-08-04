@@ -1,26 +1,21 @@
-#ifndef MAIN_CPP
-#define MAIN_CPP
 #include "whatever.hpp"
 #include <iostream>
 
-int main() {
-	int a = 10;
-	int b = 20;
-	std::string c = "zuzzurellone";
-	std::string d = "abaco";
+int main( void ) {
+	int a = 2;
+	int b = 3;
 
-	std::cout << "min between " << a << " and " << b << ": " << min(a, b) << std::endl;
-	std::cout << "min between " << c << " and " << d << ": " << min(c, d) << std::endl;
-	std::cout << "max between " << a << " and " << b << ": " << max(a, b) << std::endl;
-	std::cout << "max between " << c << " and " << d << ": " << max(c, d) << std::endl;
-	swap(a, b);
-	std::cout << "a: " << a << std::endl;
-	std::cout << "b: " << b << std::endl;
-	swap(c, d);
-	std::cout << "c: " << c << std::endl;
-	std::cout << "d: " << d << std::endl;
+	::swap( a, b );
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+	
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 	return 0;
 }
-
-
-#endif /* MAIN_CPP */
