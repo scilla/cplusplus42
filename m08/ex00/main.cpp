@@ -1,5 +1,9 @@
 #include "easyfind.hpp"
 
+const char* ElementNotFound::what() const throw() {
+	return "Element not found";
+}
+
 int main(void)
 {
 	std::vector<int> v;
