@@ -112,7 +112,7 @@ int main(int argc, char const *argv[])
 		std::cout << "int: " << int_res << std::endl;
 	
 	/*			FLOAT PRINT			*/
-	if (double_res < __FLT_MIN__ || double_res > __FLT_MAX__)
+	if ((double_res < __FLT_MIN__ || double_res > __FLT_MAX__) && (!isnan(double_res) && !isinf(double_res)) && float_res)
 		std::cout << "float: " << "impossible" << std::endl;
 	else if (!modf(float_res, &intpart) && !isnan(double_res) && !isinf(double_res))
 		std::cout << "float: " << std::setprecision(7) << float_res << ".0" << 'f' << std::endl;
