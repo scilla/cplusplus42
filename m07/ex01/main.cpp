@@ -24,7 +24,7 @@ void print(T const & x) {
 int main() {
 	int n[] = {10, 100, 88};
 	float k[] = {0.0, 1.234, 4200.42};
-	std::string s[] = {"bella pe me ", "bella pe te ", "bella pe tutti "};
+	std::string s[] = {"bella pe me", "bella pe te", "bella pe tutti"};
 
 	iter(n, 3, &print);
 	iter(k, 3, &print);
