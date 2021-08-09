@@ -3,7 +3,7 @@ OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
 RM				= rm -f
-CFLAGS			= -std=c++98 -g -Wall -Wextra -Werror
+CFLAGS			= -g -Wall -Wextra -Werror # -std=c++98 
 NAME			= easyfind
 
 %.o:			%.cpp
