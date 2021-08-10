@@ -11,14 +11,15 @@ class Span
 private:
 	const unsigned int _size;
 public:
+	unsigned int _ind;
 	std::vector<int> _array;
 	Span(unsigned int n);
 	Span(const Span& s);
 	Span& operator= (const Span& s);
 	~Span();
 	void addNumber(int i);
-	unsigned int shortestSpan() const;
-	unsigned int longestSpan() const;
+	unsigned int shortestSpan() /*const*/;
+	unsigned int longestSpan() /*const*/;
 	class FullArrayException: public std::exception
 	{
 	public:
@@ -41,27 +42,31 @@ const char* Span::ImpossibleSpanException::what() const throw() {
 }
 
 void Span::addNumber(int i) {
-	if (_array.size() == _size)
+	if (getSize() == _ind)
 		throw FullArrayException();
+	_ind++;
 	_array.push_back(i);
+	std::cout << "Added: " << i << std::endl;
 }
 
-unsigned int Span::shortestSpan() const {
+unsigned int Span::shortestSpan() /*const*/ {
+	if (_ind < 2)
+		throw ImpossibleSpanException();
 	unsigned int *res = new unsigned int;
-	res = NULL;
+	*res = std::numeric_limits<unsigned int>::max();
 	std::vector<int> cpy(_array);
 	std::sort(cpy.begin(), cpy.end());
-	for (std::vector<int>::iterator it = cpy.begin(); it != cpy.end() - 1; it++) {
-		if (!res || *res > static_cast<unsigned int>(*(it + 1) - *it))
+	for (std::vector<int>::iterator it = cpy.begin(); it != cpy.begin() + _ind - 1; it++) {
+		if (*res > static_cast<unsigned int>(*(it + 1) - *it))
 			*res = *(it + 1) - *it;
 	}
 	return *res;
 }
 
-unsigned int Span::longestSpan() const {
-	std::vector<int> cpy(_array);
-	std::sort(cpy.begin(), cpy.end());
-	return *(cpy.end() -1) - *cpy.begin();
+unsigned int Span::longestSpan() /*const*/ {
+	if (_ind < 2)
+		throw ImpossibleSpanException();
+	return *(std::max_element(_array.begin(), _array.end())) - *(std::min_element(_array.begin(), _array.end()));
 }
 
 
@@ -71,6 +76,7 @@ unsigned int Span::getSize() const {
 
 Span::Span(unsigned int n): _size(n)
 {
+	_ind = 0;
 }
 
 Span::Span(const Span& s): _size(s.getSize())
@@ -81,6 +87,7 @@ Span::Span(const Span& s): _size(s.getSize())
 Span& Span::operator= (const Span& s)
 {
 	_array = s._array;
+	_ind = s._ind;
 	// for (std::vector<int>::iterator it = s._array.begin(); it != s._array.end(); it++) {
 	// 	_array.push_back(*it);
 	// }

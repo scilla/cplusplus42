@@ -4,7 +4,7 @@ OBJ				= $(SRCS:.cpp=.o)
 CC				= clang++
 RM				= rm -f
 CFLAGS			= -g -Wall -Wextra -Werror # -std=c++98 
-NAME			= easyfind
+NAME			= span
 
 %.o:			%.cpp
 				$(CC) $(CFLAGS) -c $< -o $@
