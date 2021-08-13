@@ -3,85 +3,31 @@
 #include <stack>
 #include <vector>
 #include <deque>
+#include <iterator>
 
-//template<typename T, typename C = std::deque<T> >
-template<class T>
+template<typename T>
 class MutantStack: public std::stack<T>
 {
 public:
 	typedef typename std::stack<T>::container_type::iterator iterator;
+	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+	typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+	typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 	MutantStack(): std::stack<T>() {};
 	~MutantStack() {};
-	template<typename C>
-	MutantStack(const C& orig);
 	MutantStack(const MutantStack& mstack): std::stack<T>(mstack) {};
 	MutantStack<T>& operator= (const MutantStack<T>& mstack) {
 		std::stack<T>::operator=(mstack);
 		return *this;
 	}
-	/*
-	MutantStack(std::vector<T>& orig);
-	MutantStack(std::deque<T>& orig);
-	MutantStack(std::stack<T>& orig);
-	*/
-	/*
-	class iterator
-	{
-	private:
-		int	_ind;
-		std::vector<T*> _ptrs;
-	public:
-		void update();
-	};
-	*/
-	iterator begin()
-	{
-		return std::stack<T>::c.begin();
-	}
-
-	iterator end()
-	{
-		return std::stack<T>::c.end();
-	}
+	iterator begin() { return this->c.begin(); }
+	iterator end() { return this->c.end(); }
+	reverse_iterator rbegin() { return this->c.rbegin(); }
+	reverse_iterator rend() { return this->c.rend(); }
+	const_iterator begin() const { return this->c.begin(); }
+	const_iterator end() const { return this->c.end(); }
+	const_reverse_iterator rbegin() const { return this->c.rbegin(); }
+	const_reverse_iterator rend() const { return this->c.rend(); }
 };
 
-
-template<class T>
-template<class C>
-MutantStack<T>::MutantStack(const C& orig): std::stack<T, C>(orig)
-{
-}
-
-/*
-template<typename T, typename C>
-MutantStack<T, C>::MutantStack(std::vector<T>& orig): std::stack<T, C>(orig)
-{
-}
-
-template<typename T, typename C>
-MutantStack<T, C>::MutantStack(std::deque<T>& orig): std::stack<T, C>(orig)
-{
-}
-
-template<typename T, typename C>
-MutantStack<T, C>::MutantStack(std::stack<T>& orig): std::stack<T, C>(orig)
-{
-}
-*/
-/*
-template<typename T, typename C>
-void MutantStack<T, C>::iterator::update() {
-	_ptrs.clear();
-	std::stack<T> tmp;
-	while (!this->empty())
-	{
-		tmp.push_back(this->pop_back());
-	}
-	while (!tmp.empty())
-	{
-		this->push_back(tmp.pop_back());
-		_ptrs.push(this->top());
-	}
-}
-*/
 #endif /* MUTANTSTACK_HPP */
