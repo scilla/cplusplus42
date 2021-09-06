@@ -59,16 +59,6 @@ int	main()
 			std::cerr << e.what() << std::endl;
 		}
 
-		try
-		{
-			std::cout << "Shortest: " << x.shortestSpan() << std::endl;
-			std::cout << "Longest: " << x.longestSpan() << std::endl;
-		}
-		catch (const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-
 		x = s;
 
 		try
@@ -83,34 +73,19 @@ int	main()
 	}
 
 	{
-		Span	s(10001);
+		Span	s(100);
 
 		try
 		{
-			s.addRange(-5000, 5000);
+			s.addRandom(100);
 		}
 		catch (const std::exception& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
-
 		try
 		{
-			std::cout << "Shortest: " << s.shortestSpan() << std::endl;
-			std::cout << "Longest: " << s.longestSpan() << std::endl;
-		}
-		catch (const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-
-	{
-		Span	s(10001);
-
-		try
-		{
-			s.addRandom(10000);
+			s.addRandom(1);
 		}
 		catch (const std::exception& e)
 		{

@@ -5,6 +5,7 @@
 # include <array>
 # include <vector>
 # include <iostream>
+#include <stdlib.h> 
 
 class Span
 {
@@ -18,6 +19,7 @@ public:
 	Span& operator= (const Span& s);
 	~Span();
 	void addNumber(int i);
+	void addRandom(unsigned int i);
 	unsigned int shortestSpan() /*const*/;
 	unsigned int longestSpan() /*const*/;
 	class FullArrayException: public std::exception
@@ -34,7 +36,7 @@ public:
 };
 
 const char* Span::FullArrayException::what() const throw() {
-	return "Array is already full";
+	return "Not enough space in array";
 }
 
 const char* Span::ImpossibleSpanException::what() const throw() {
@@ -47,6 +49,15 @@ void Span::addNumber(int i) {
 	_ind++;
 	_array.push_back(i);
 	std::cout << "Added: " << i << std::endl;
+}
+
+void Span::addRandom(unsigned int i) {
+	if (getSize() - _ind < i)
+		throw FullArrayException();
+	while (i--)
+	{
+		addNumber(rand());
+	}
 }
 
 unsigned int Span::shortestSpan() /*const*/ {

@@ -7,7 +7,6 @@ private:
 	int _n;
 public:
 	Awesome(int n): _n(n) {}
-	//~Awesome();
 	bool operator==( Awesome const & rhs) const { return (this->_n == rhs._n); }
 	bool operator!=( Awesome const & rhs) const { return (this->_n != rhs._n); }
 	bool operator>( Awesome const & rhs) const { return (this->_n > rhs._n); }

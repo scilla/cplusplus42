@@ -1,4 +1,4 @@
-SRCS			= main2.cpp
+SRCS			= main.cpp
 OBJ				= $(SRCS:.cpp=.o)
 
 CC				= clang++
